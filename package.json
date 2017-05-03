@@ -1,0 +1,30 @@
+{
+  "name": "ds_chat_front",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "cross-env": "^4.0.0",
+    "enzyme": "^2.8.2",
+    "react-scripts": "^0.7.0",
+    "react-test-renderer": "^15.5.4"
+  },
+  "dependencies": {
+    "axios": "^0.15.2",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "reduce-reducers": "^0.1.2",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.7.4",
+    "redux-promise-middleware": "^4.2.0",
+    "redux-thunk": "^2.2.0",
+    "socket.io-client": "^1.5.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "cross-env CI=true react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:3001"
+}
