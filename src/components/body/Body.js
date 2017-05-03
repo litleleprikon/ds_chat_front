@@ -11,19 +11,20 @@
  *                                                    \/_/
  */
 
-import React from 'react';
-import Chat from './chat/Chat';
-import './Body.css';
-import Auth from './auth/Auth'
-import {connect} from 'react-redux';
+import React from "react";
+import Chat from "./chat/Chat";
+import "./Body.css";
+import Auth from "./auth/Auth";
+import {connect} from "react-redux";
 
-const Body = ({username}) => {
-    if (username) {
-        return (<div className="container-fluid" id="body">
-            <div className="col-md-8 col-md-offset-2"><Chat/></div>
-        </div>)
-    }
-    return <Auth/>;
+export const Body = ({username}) => {
+  if (username) {
+    return (<div className="container-fluid" id="body">
+      Welcome to chat {username}
+      <div className="col-md-8 col-md-offset-2"><Chat/></div>
+    </div>)
+  }
+  return <Auth/>;
 };
 
-export default connect(state=>({username: state.user.username}))(Body);
+export default connect(state => ({username: state.user.username}))(Body);

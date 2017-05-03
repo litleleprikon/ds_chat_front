@@ -11,26 +11,26 @@
  *                                                    \/_/
  */
 
-import React from 'react';
-import {connect} from 'react-redux';
+import React from "react";
+import {connect} from "react-redux";
 //panel-warning
 const ChatMessage = ({details, username}) => {
-    if (details.user === 'service') {
-        return (
-            <div>
-                {details.user}: {details.text}
-            </div>
-        )
-    }
+  if (details.user === 'service') {
     return (
-        <div
-            className={details.user === username ? details.approved ? "panel panel-success" : "panel panel-warning" : "panel panel-info"}>
-            <div className="panel-heading">{details.user}</div>
-            <div className="panel-body">
-                {details.text}
-            </div>
-        </div>
+      <div>
+        {details.user}: {details.text}
+      </div>
     )
+  }
+  return (
+    <div
+      className={details.user === username ? details.approved ? "panel panel-success" : "panel panel-warning" : "panel panel-info"}>
+      <div className="panel-heading">{details.user}</div>
+      <div className="panel-body">
+        {details.text}
+      </div>
+    </div>
+  )
 };
 
 export default connect((state) => ({username: state.user.username}))(ChatMessage);

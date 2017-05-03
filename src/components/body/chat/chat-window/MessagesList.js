@@ -11,18 +11,18 @@
  *                                                    \/_/
  */
 
-import React from 'react';
-import {connect} from 'react-redux';
-import ChatMessage from './ChatMessage';
+import React from "react";
+import {connect} from "react-redux";
+import ChatMessage from "./ChatMessage";
 
 const MessagesList = ({messages}) => {
-    var messagesComponents = Object.keys(messages).map((key) => <ChatMessage details={messages[key]}
-                                                                              key={key}/>);
-    return (
-        <div>
-            {messagesComponents}
-        </div>
-    )
+  var messagesComponents = Object.keys(messages).map((key) => <ChatMessage details={messages[key]}
+                                                                           key={key}/>);
+  return (
+    <div>
+      {messagesComponents}
+    </div>
+  )
 };
 
 

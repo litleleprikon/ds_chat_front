@@ -11,17 +11,16 @@
  *                                                    \/_/
  */
 
-import React from 'react';
-import {connect} from 'react-redux';
+import React from "react";
 
 const ContactsList = ({contacts}) => {
-    return (
-        <div className="col-md-3 col-md-push-2">
-            <table className="table">
-                {}
-            </table>
-        </div>
-    )
+  return (
+    <div className="col-md-3 col-md-push-2">
+      <table className="table">
+        {}
+      </table>
+    </div>
+  )
 };
 
 export default ContactsList;

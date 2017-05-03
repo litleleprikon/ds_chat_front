@@ -11,11 +11,11 @@
  *                                                    \/_/
  */
 
-import { applyMiddleware, createStore } from "redux"
+import {applyMiddleware, createStore} from "redux";
 
 import thunk from "redux-thunk";
 import promise from "redux-promise-middleware";
-import logger from "redux-logger"
+import logger from "redux-logger";
 
 import reducer from "./reducers";
 

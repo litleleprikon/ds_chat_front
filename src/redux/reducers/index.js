@@ -11,24 +11,26 @@
  *                                                    \/_/
  */
 
-import { combineReducers } from 'redux';
-import reduceReducers from 'reduce-reducers';
-import user from './userReducer';
-import chat from './chatReducer';
+import {combineReducers} from "redux";
+import reduceReducers from "reduce-reducers";
+import user from "./userReducer";
+import chat from "./chatReducer";
+
+export const globalReducer = (state = {banned: true}, action) => {
+  switch (action.type) {
+    case 'BAN':
+      return {...state, banned: true};
+    case 'SET_USERNAME':
+      return {
+        user: {...state.user, username: action.payload},
+        chat: {...state.chat, username: action.payload}
+      };
+    default:
+      return state;
+  }
+};
 
 export default reduceReducers(combineReducers({
-    user,
-    chat
-}), (state, action) => {
-    switch (action.type) {
-        case 'BAN':
-            return {...state, banned: true};
-        case 'SET_USERNAME':
-            return {
-                user: {...state.user, username: action.payload},
-                chat: {...state.chat, username: action.payload}
-            };
-        default:
-            return state;
-    }
-});
+  user,
+  chat
+}), globalReducer);

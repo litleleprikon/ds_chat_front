@@ -11,18 +11,18 @@
  *                                                    \/_/
  */
 
-import React from 'react';
+import React from "react";
 // import {connect} from 'react-redux';
-import MessagesList from './chat-window/MessagesList';
-import MessageField from './chat-window/MessageField';
+import MessagesList from "./chat-window/MessagesList";
+import MessageField from "./chat-window/MessageField";
 
 const Chat = (props) => {
-    return (
-        <div>
-            <MessagesList/>
-            <MessageField/>
-        </div>
-    )
+  return (
+    <div>
+      <MessagesList/>
+      <MessageField/>
+    </div>
+  )
 };
 
 // const mapDispatchToProps = (dispatch) => {

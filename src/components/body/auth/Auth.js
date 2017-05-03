@@ -11,45 +11,45 @@
  *                                                    \/_/
  */
 
-import React from 'react';
-import {connect} from 'react-redux';
-import './Auth.css';
-import Login from './loginRegister/Login';
-import Register from './loginRegister/Register';
-import Error from './AuthError'
+import React from "react";
+import {connect} from "react-redux";
+import "./Auth.css";
+import Login from "./loginRegister/Login";
+import Register from "./loginRegister/Register";
+import Error from "./AuthError";
 
 const Auth = (props) => {
-    if (props.error) {
-        return <Error title="Whoops, error occurred" message={props.error}/>
-    }
-    if (props.login.formRequested) {
-        return <Login/>
-    }
+  if (props.error) {
+    return <Error title="Whoops, error occurred" message={props.error}/>
+  }
+  if (props.login.formRequested) {
+    return <Login/>
+  }
 
-    if (props.register.formRequested) {
-        return <Register/>
-    }
+  if (props.register.formRequested) {
+    return <Register/>
+  }
 
-    return (
-        <div id="auth">
-            <div><h1>Welcome everybody to my Chat</h1></div>
-            <button type="button" className="btn btn-primary" onClick={props.onWantLoginClick}>Login
-            </button>
-            <button type="button" className="btn btn-default" onClick={props.onWantRegisterClick}>
-                Register
-            </button>
-        </div>);
+  return (
+    <div id="auth">
+      <div><h1>Welcome everybody to my Chat</h1></div>
+      <button type="button" className="btn btn-primary" onClick={props.onWantLoginClick}>Login
+      </button>
+      <button type="button" className="btn btn-default" onClick={props.onWantRegisterClick}>
+        Register
+      </button>
+    </div>);
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        onWantLoginClick: () => {
-            dispatch({type: 'WANT_LOGIN_PRESSED'});
-        },
-        onWantRegisterClick: () => {
-            dispatch({type: 'WANT_REGISTER_PRESSED'});
-        }
+  return {
+    onWantLoginClick: () => {
+      dispatch({type: 'WANT_LOGIN_PRESSED'});
+    },
+    onWantRegisterClick: () => {
+      dispatch({type: 'WANT_REGISTER_PRESSED'});
     }
+  }
 };
 
 

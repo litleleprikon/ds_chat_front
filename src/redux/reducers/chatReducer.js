@@ -11,78 +11,80 @@
  *                                                    \/_/
  */
 
-const defaultStore = {
-    socket: null,
-    username: null,
-    messages: {},
-    currentMessage: ""
+export const defaultStore = {
+  socket: null,
+  username: null,
+  messages: {},
+  currentMessage: ""
 };
 
-export default function reducer(state = defaultStore,
+export function reducer(state = defaultStore,
                                 action) {
-    switch (action.type) {
-        case 'BAN':
-            return defaultStore;
-        case 'CONNECTION_ESTABLISHED':
-            return {...state, socket: action.payload};
-        case 'MESSAGE_CHANGED':
-            return {...state, currentMessage: action.payload};
-        case 'MESSAGE_RECEIVED':
-            return {
-                ...state,
-                currentMessage: "",
-                messages: {
-                    ...state.messages,
-                    [action.payload.id]: {
-                        user: action.payload.username,
-                        text: action.payload.message,
-                    }
-                }
-            };
-        case 'NEW_MESSAGE':
-            var id = '' + action.payload.time + state.username;
-            state.socket.emit('message', {id: id, message: state.currentMessage});
-            return {
-                ...state,
-                currentMessage: "",
-                messages: {
-                    ...state.messages,
-                    [id]: {
-                        user: state.username,
-                        text: state.currentMessage,
-                        approved: false
-                    }
-                }
-            };
-        case 'APPROVE':
-            var id = action.payload;
-            var message = state.messages[id];
-            if (message) {
-                return {
-                    ...state,
-                    currentMessage: "",
-                    messages: {
-                        ...state.messages,
-                        [id]: {
-                            ...message,
-                            approved: true
-                        }
-                    }
-                };
+  switch (action.type) {
+    case 'BAN':
+      return defaultStore;
+    case 'CONNECTION_ESTABLISHED':
+      return {...state, socket: action.payload};
+    case 'MESSAGE_CHANGED':
+      return {...state, currentMessage: action.payload};
+    case 'MESSAGE_RECEIVED':
+      return {
+        ...state,
+        currentMessage: "",
+        messages: {
+          ...state.messages,
+          [action.payload.id]: {
+            user: action.payload.username,
+            text: action.payload.message,
+          }
+        }
+      };
+    case 'NEW_MESSAGE':
+      var id = '' + action.payload.time + state.username;
+      state.socket.emit('message', {id: id, message: state.currentMessage});
+      return {
+        ...state,
+        currentMessage: "",
+        messages: {
+          ...state.messages,
+          [id]: {
+            user: state.username,
+            text: state.currentMessage,
+            approved: false
+          }
+        }
+      };
+    case 'APPROVE':
+      var id = action.payload;
+      var message = state.messages[id];
+      if (message) {
+        return {
+          ...state,
+          currentMessage: "",
+          messages: {
+            ...state.messages,
+            [id]: {
+              ...message,
+              approved: true
             }
-            return state;
-        case 'SERVICE':
-            return {
-                ...state,
-                messages: {
-                    ...state.messages,
-                    ['service' + new Date().getTime()]: {
-                        user: 'service',
-                        text: action.payload
-                    }
-                }
-            };
-        default:
-            return state;
-    }
+          }
+        };
+      }
+      return state;
+    case 'SERVICE':
+      return {
+        ...state,
+        messages: {
+          ...state.messages,
+          ['service' + new Date().getTime()]: {
+            user: 'service',
+            text: action.payload
+          }
+        }
+      };
+    default:
+      return state;
+  }
 };
+
+export default reducer;

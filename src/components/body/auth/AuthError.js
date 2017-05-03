@@ -11,25 +11,25 @@
  *                                                    \/_/
  */
 
-import React from 'react';
-import {connect} from 'react-redux';
+import React from "react";
+import {connect} from "react-redux";
 
-const AuthError = ({title, message, okPressed}) =>(
-    <div className="panel panel-danger">
-        <div className="panel-heading">{title}</div>
-        <div className="panel-body">
-            {message}
-            <button type="button" className="btn btn-primary btn-lg btn-block" onClick={okPressed}>Ok</button>
-        </div>
+export const AuthError = ({title, message, okPressed}) => (
+  <div className="panel panel-danger">
+    <div className="panel-heading">{title}</div>
+    <div className="panel-body">
+      {message}
+      <button type="button" className="btn btn-primary btn-lg btn-block" onClick={okPressed}>Ok</button>
     </div>
+  </div>
 );
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        okPressed: () => {
-            dispatch({type: 'ERROR_VIEWED'})
-        }
+  return {
+    okPressed: () => {
+      dispatch({type: 'ERROR_VIEWED'})
     }
+  }
 };
 
 export default connect(null, mapDispatchToProps)(AuthError);
